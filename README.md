@@ -6,7 +6,7 @@
 
 The aim of this project is to present a minimum viable machine learning pipeline for training and hosting a custom Machine Learning/Deep Learning model in python with a REST endpoint exposed for inference.
 This pipeline continuously builds training and inference docker image for your custom model and then invokes a SageMaker job to train it and after training deploys an SageMaker enpoint for inferece.
-The pipeline resources can be provisioned in AWS by creating a CloudFormation stack from the template provided here: [*template/sagemaker-pipeline.yaml*](https://github.com/MustafaWaheed91/sagemaker-pipeline/blob/master/template/sagemaker-pipeline.yaml)
+The pipeline resources can be provisioned in AWS by creating a CloudFormation stack from the template provided here: [*template/sagemaker-pipeline.yaml*](https://github.com/VRajesh001/sagemaker-pipeline/tree/master/template/sagemaker-pipeline.yaml)
 
 The pipeline is executed whenever
 * A new commit is pushed to the Github repository branch you specify in the CloudFormation template
@@ -32,8 +32,8 @@ In order to use this pipeline its expected that your model algorithm is packaged
 
 To learn more about packaging python code [see here](https://python-packaging.readthedocs.io/en/latest/). Also **please note** that you would need to get a personal access token for the pipeline to link to your source repo in Github.
 
-Check out [this repository](https://github.com/MustafaWaheed91/tf-gamesbiz) as an example of a packaged python model that can be consumed by this pipeline.
-Feel free to clone [this repository](https://github.com/MustafaWaheed91/tf-gamesbiz) and the packaged module "gamesbiz" inside.
+Check out [this repository](https://github.com/VRajesh001/gamesprediction.git) as an example of a packaged python model that can be consumed by this pipeline.
+Feel free to clone [this repository](https://github.com/VRajesh001/gamesprediction.git) and the packaged module "gamesbiz" inside.
 
 **Note**: The the training algorithm is in the module *train.py* implemented as a function named "entry_point()" and the inference code is in *serve.py* with its entrypoint function also specified in setup.py
 
@@ -41,7 +41,7 @@ As you can see the root level of your Github repo has a *setup.py* file present 
 In order to use this CICD pipeline with your packaged python code you need to add an "entry_points" argument in your *setup.py* file in the "setup()" function.
 
 This additional "entry_points" argument provides all the information the pipeline needs to build a SageMaker compatible docker image.
-You can see this in the *setup.py* file for the [example repo](https://github.com/MustafaWaheed91/tf-gamesbiz) where the function is named "entry_point()" as well.
+You can see this in the *setup.py* file for the [example repo](https://github.com/VRajesh001/gamesprediction.git) where the function is named "entry_point()" as well.
 
 Make sure to keep "train" and "serve" keywords on the LHS of the "=" when specifying the entry point string as seen in the juxtaposition below.
 
@@ -92,7 +92,7 @@ setup(
 To launch the pipeline open up your terminal and do the following:
 
 ```
-git clone https://github.com/MustafaWaheed91/sagemaker-pipeline.git
+git clone https://github.com/VRajesh001/sagemaker-pipeline.git
 
 cd sagemaker-pipeline
 
@@ -192,4 +192,4 @@ To tear down the pipeline resources just delete the CF stack from the cloud form
 
 ## Author
 
-* **Mustafa Waheed** - *Data Scientist*
+Rajesh Vyas
